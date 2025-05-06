@@ -38,3 +38,6 @@ out/
 
 ### Kotlin ###
 .kotlin
+/gradlew
+/gradlew.bat
+/.env

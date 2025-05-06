@@ -1,3 +1,35 @@
 spring:
   application:
     name: disabled-escort-server
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/${POSTGRESDB_ESCORT_NAME}
+    username: ${POSTGRESDB_ROOT_USER}
+    password: ${POSTGRESDB_PASSWORD}
+    driverClassName: org.postgresql.Driver
+  jpa:
+    hibernate.ddlAuto: update
+    database: postgresql
+    databasePlatform: org.hibernate.dialect.PostgreSQLDialect
+server:
+  port: ${ESCORT_SERVER_PORT}
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+  application:
+    name: disabled-escort-server
+  datasource:
+    url: jdbc:postgresql://${ESCORTDB_CONTAINER_NAME}:${POSTGRESDB_ESCORT_PORT}/${POSTGRESDB_ESCORT_NAME}
+    username: ${POSTGRESDB_USER}
+    password: ${POSTGRESDB_PASSWORD}
+    driverClassName: org.postgresql.Driver
+  jpa:
+    hibernate.ddlAuto: update
+    database: postgresql
+    databasePlatform: org.hibernate.dialect.PostgreSQLDialect
+server:
+  port: ${ESCORT_SERVER_PORT}
