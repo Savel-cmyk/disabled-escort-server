@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/v1/auth")
 class AuthenticationController(val authService: AuthenticationService) {
 
-    @PostMapping("/register")
+    @PostMapping("/public/register")
     fun registerClient(
         @RequestBody @Valid userDto: UserRegistrationDto
     ): ResponseEntity<Any> {
@@ -24,7 +24,7 @@ class AuthenticationController(val authService: AuthenticationService) {
         return ResponseEntity.accepted().build()
     }
 
-    @PostMapping("/authenticate")
+    @PostMapping("/public/authenticate")
     fun authenticateUser(
         @RequestBody request: AuthenticationRequestDto
     ): ResponseEntity<AuthenticationResponseDto> {

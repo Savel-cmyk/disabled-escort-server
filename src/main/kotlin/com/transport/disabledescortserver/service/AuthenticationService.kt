@@ -5,7 +5,6 @@ import com.transport.disabledescortserver.dto.AuthenticationResponseDto
 import com.transport.disabledescortserver.dto.UserRegistrationDto
 import com.transport.disabledescortserver.mapper.UserMapper
 import com.transport.disabledescortserver.model.User
-import com.transport.disabledescortserver.repository.RoleRepository
 import com.transport.disabledescortserver.repository.TokenRepository
 import com.transport.disabledescortserver.repository.UserRepository
 import com.transport.disabledescortserver.util.JwtUtil
@@ -21,7 +20,6 @@ import java.lang.IllegalStateException
 @Service
 class AuthenticationService(
 
-    private val roleRepository: RoleRepository,
     private val userRepository: UserRepository,
     private val authManager: AuthenticationManager,
     private val userMapper: UserMapper,
@@ -35,10 +33,7 @@ class AuthenticationService(
      */
     fun registerClient(userToRegister: UserRegistrationDto) {
 
-        val userRole = roleRepository.findRoleByName("USER")
-            .orElseThrow { IllegalStateException("Role USER wasn't initialized") }
-
-        userRepository.save(userMapper.toUserDao(userToRegister, userRole))
+        userRepository.save(userMapper.toUserDao(userToRegister))
     }
 
     /**

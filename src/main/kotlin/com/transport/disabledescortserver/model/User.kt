@@ -27,10 +27,10 @@ class User(
     val patronymic: String,
     @Column(unique = true)
     val email: String,
+    val number: String? = null,
     private val password: String,
     val accountLocked: Boolean = false,
-    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
-    val roles: MutableList<Role>,
+    val role: Role = Role.USER,
     @OneToMany(mappedBy = "user")
     val tokens: MutableList<Token> = ArrayList(),
     @CreatedDate
@@ -41,9 +41,7 @@ class User(
 ): UserDetails, Principal {
 
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
-        return this.roles
-            .map{SimpleGrantedAuthority(it.name)}
-            .toMutableList()
+        return mutableListOf( SimpleGrantedAuthority("ROLE_" + this.role.name) )
     }
 
     override fun getPassword(): String {

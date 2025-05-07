@@ -1,39 +1,19 @@
 package com.transport.disabledescortserver.model
 
-import com.fasterxml.jackson.annotation.JsonIgnore
-import jakarta.persistence.*
-import org.springframework.data.annotation.CreatedDate
-import org.springframework.data.annotation.LastModifiedDate
-import org.springframework.data.jpa.domain.support.AuditingEntityListener
-import java.time.LocalDateTime
+import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
 
-@Entity
-@Table
-@EntityListeners(AuditingEntityListener::class)
-class Role(
+enum class Role{
 
-    @Id
-    @GeneratedValue
-    val id: Long? = null,
-    @Column(unique = true)
-    val name: String,
-    @ManyToMany(cascade = [CascadeType.REMOVE], fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "role-user",
-        joinColumns = [
-            JoinColumn(name = "roleId")
-        ],
-        inverseJoinColumns = [
-            JoinColumn(name = "userId")
-        ]
-    )
-    @JsonIgnore
-    val users: MutableList<User> = ArrayList(),
+    USER,
 
-    @CreatedDate
-//    @Column(nullable = false, updatable = false)
-    val createdDate: LocalDateTime? = null,
-    @LastModifiedDate
-//    @Column(insertable = false)
-    val lastModifiedDate: LocalDateTime? = null
-)
+    ACCOMPANYING,
+
+    ADMIN
+    ;
+
+    fun getAuthorities(): MutableList<out GrantedAuthority> {
+
+        return mutableListOf(SimpleGrantedAuthority("ROLE_" + this.name))
+    }
+}

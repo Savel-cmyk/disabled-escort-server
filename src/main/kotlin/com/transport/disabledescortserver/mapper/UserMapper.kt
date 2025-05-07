@@ -12,7 +12,7 @@ class UserMapper(
     private val passwordEncoder: PasswordEncoder
 ) {
 
-    fun toUserDao(userDto: UserRegistrationDto, role: Role): User {
+    fun toUserDao(userDto: UserRegistrationDto): User {
 
         return User(
             birthDate = userDto.birthDate,
@@ -20,8 +20,7 @@ class UserMapper(
             name = userDto.name,
             patronymic = userDto.patronymic,
             email = userDto.email,
-            password = passwordEncoder.encode(userDto.password),
-            roles = mutableListOf(role)
+            password = passwordEncoder.encode(userDto.password)
         )
     }
 }
