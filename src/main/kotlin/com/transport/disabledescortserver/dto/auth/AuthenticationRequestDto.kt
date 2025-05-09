@@ -1,4 +1,4 @@
-package com.transport.disabledescortserver.dto
+package com.transport.disabledescortserver.dto.auth
 
 data class AuthenticationRequestDto (
     val email: String,

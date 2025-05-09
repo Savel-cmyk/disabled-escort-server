@@ -1,7 +1,7 @@
 package com.transport.disabledescortserver.controller
 
-import com.transport.disabledescortserver.dto.UserDataToEditDto
-import com.transport.disabledescortserver.dto.UserPersonalDataDto
+import com.transport.disabledescortserver.dto.user.UserDataToEditDto
+import com.transport.disabledescortserver.dto.user.UserPersonalDataDto
 import com.transport.disabledescortserver.service.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

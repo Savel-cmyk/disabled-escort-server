@@ -1,17 +1,15 @@
 package com.transport.disabledescortserver.service
 
-import com.transport.disabledescortserver.dto.AuthenticationRequestDto
-import com.transport.disabledescortserver.dto.AuthenticationResponseDto
-import com.transport.disabledescortserver.dto.UserRegistrationDto
+import com.transport.disabledescortserver.dto.auth.AuthenticationRequestDto
+import com.transport.disabledescortserver.dto.auth.AuthenticationResponseDto
+import com.transport.disabledescortserver.dto.auth.UserRegistrationDto
 import com.transport.disabledescortserver.mapper.UserMapper
 import com.transport.disabledescortserver.model.User
-import com.transport.disabledescortserver.repository.TokenRepository
 import com.transport.disabledescortserver.repository.UserRepository
 import com.transport.disabledescortserver.util.JwtUtil
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.stereotype.Service
-import java.lang.IllegalStateException
 
 /**
  * @author Savel-cmyk

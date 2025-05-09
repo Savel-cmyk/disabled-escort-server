@@ -23,12 +23,12 @@ class User(
     val id: UUID? = null,
     val birthDate: LocalDate? = null,
     val surname: String,
-    private val name: String,
+    @JvmField final val name: String,
     val patronymic: String,
     @Column(unique = true)
     val email: String,
     val number: String? = null,
-    private val password: String,
+    @JvmField final val password: String,
     val accountLocked: Boolean = false,
     val role: Role = Role.USER,
     @OneToMany(mappedBy = "user")
@@ -41,7 +41,7 @@ class User(
 ): UserDetails, Principal {
 
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
-        return mutableListOf( SimpleGrantedAuthority("ROLE_" + this.role.name) )
+        return this.role.getAuthorities()
     }
 
     override fun getPassword(): String {

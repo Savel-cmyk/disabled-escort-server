@@ -1,4 +1,4 @@
-package com.transport.disabledescortserver.dto
+package com.transport.disabledescortserver.dto.user
 
 
 data class UserDataToEditDto(

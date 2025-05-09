@@ -1,4 +1,4 @@
-package com.transport.disabledescortserver.dto
+package com.transport.disabledescortserver.dto.auth
 
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
@@ -18,5 +18,6 @@ data class UserRegistrationDto(
     val email: String,
     @NotBlank(message = "Password is mandatory")
     @Size(min = 8, message = "Password should be 8 characters long minimum")
-    val password: String
+    val password: String,
+    val number: String?
 )

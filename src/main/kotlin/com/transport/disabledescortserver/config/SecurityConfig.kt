@@ -32,7 +32,7 @@ class SecurityConfig(
 
     private val permittedEndpoints = arrayOf(
         "/api/v1/user/public/**",
-        "/api/v1/auth/public**"
+        "/api/v1/auth/public/**"
     )
 
     @Bean

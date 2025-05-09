@@ -1,6 +1,6 @@
 package com.transport.disabledescortserver.controller
 
-import com.transport.disabledescortserver.dto.RoleAssignmentDto
+import com.transport.disabledescortserver.dto.admin.RoleAssignmentDto
 import com.transport.disabledescortserver.service.AdminService
 import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize

@@ -1,8 +1,8 @@
 package com.transport.disabledescortserver.controller
 
-import com.transport.disabledescortserver.dto.AuthenticationRequestDto
-import com.transport.disabledescortserver.dto.AuthenticationResponseDto
-import com.transport.disabledescortserver.dto.UserRegistrationDto
+import com.transport.disabledescortserver.dto.auth.AuthenticationRequestDto
+import com.transport.disabledescortserver.dto.auth.AuthenticationResponseDto
+import com.transport.disabledescortserver.dto.auth.UserRegistrationDto
 import com.transport.disabledescortserver.service.AuthenticationService
 import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity
